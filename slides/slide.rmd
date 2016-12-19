@@ -1,0 +1,143 @@
+---
+title: "slide"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r echo=FALSE, message=FALSE}
+setwd("/Users/Jimmy/Dropbox/stat133/final_proj/projects")
+library("dplyr")
+library("stringr")
+library("MASS")
+library("ggplot2")
+library("plyr")
+library("stringr")
+library("readr")
+library("reshape2")
+library("png")
+
+```
+
+```{r echo=FALSE, message=FALSE}
+# read in clean roster data
+data_table = read.csv(file = "../data/cleandata/roster-salary-stats.csv" , header = TRUE, stringsAsFactors = FALSE)
+data_table = data_table[, -1]
+
+# read in Efficency data
+EFF_table = read.csv(file = "../data/cleandata/eff-stats-salary.csv")
+
+# add position column to Efficency table 
+EFF_table$position = data_table$position
+
+
+# read in summary table
+summary_table = read.csv(file = "../data/cleandata/team-salaries.csv",
+                         header = TRUE, stringsAsFactors = FALSE)
+
+```
+
+## test
+
+```{r echo=FALSE, message=FALSE}
+
+# bar plot for total pay roll for each team
+ggplot(summary_table, aes(
+  x = reorder(summary_table$X, summary_table$Total_Pay_Roll), y = summary_table$Total_Pay_Roll , fill =summary_table$X
+  )) +
+  geom_bar(stat = "identity") +
+  labs(title = "NBA teams' Total Pay Roll ($)", x = "Team", y = "Total Pay Roll") +
+  theme(axis.text.x = element_text(angle = 90,  hjust = 1 ))+
+  guides(fill = guide_legend(title = "Team"))
+
+
+```
+
+## Abstract of project 
+
+This project examines the relationship between the performance and salaries of basketball players from the National Basketball Association (NBA) in the 2015-2016 season. To visualize the different statistics, we have created a shiny app that displays a horizontal bar-chart (one bar per team).
+
+## Introduction
+
+With the data obtained from Basketball Reference by Sports Reference LLC, this project studies the relationship between the performance and salaries of basketball players from the National Basketball Association (NBA) in the 2015-2016 season. The shiny app is used to help us visualize different statistics. 
+
+## Data Resources 
+
+**NBA** 
+
+-The National Basketball Association (NBA) is the pre-eminent men's Professional Basketball League in North America
+
+-There are 30 teams in the league (29 in the United States and 1 in Canada)
+
+-The teams are divided into two conferences of three divisions with five teams each
+
+All research data is gather from [basketball-reference-link](http://www.basketball-reference.com/)
+
+
+## Data Tables 
+
+-**Roster Table**  
+
+It includes the information about each player's name, position, height, weight, birth date, country of origin, years of experience, and attended college.
+
+-**Totals Table**
+
+Also known for player statistics, it has the player’s statistics during the entire season: age, games played, games started, minutes played, field goals, field goal attempts, etc. 
+
+-**Salaries Table**
+
+As its name suggests, consists the salary of the players
+
+## Methodlogy 
+
+- Data Collection
+
+- Merging Data
+
+- Cleaning Data
+
+- Exploratory Data Analysis
+
+- Quantifying value 
+
+
+## Exploratory Data Analysis
+- **Quantitative Data**
+
+1. We calculate the Mean, Max, Min, Range, SD, and median for all quantitative data
+
+2. form A data frame for all variables 
+
+3. Visualized results by boxplot, histogram and barplot 
+
+- **Qualitatie Data** 
+
+1. We first get a frequency table of qualitative variables
+
+2. Remove the last row if there is missing value
+
+3. Visualized results as histogram
+
+A more interactive visulization (Shiny App) of our data could be find  [team-salaries-shiny-link](https://jiushuang.shinyapps.io/team-salaries/)
+
+## Measuring the Player's Performance 
+- To evaluate the performance of the players, we use a formula called EFF 
+
+$EFF = (PTS + REB + AST + STL + BLK - Missed FG -$ 
+$Missed FT - TO) / GP.$
+
+relationship between different statistics/skills and players salary
+[stat-salaries-shiny-link](https://jiushuang.shinyapps.io/stat-salaries/)
+
+- Value of a player 
+
+$value = efficiency / salary$  
+
+We use this value to identify the top 20 players , which means most valuable and the bottom 20 players, those with least value 
+
+- most valuable player is Dahntay Jones;  least valueable player is Channing Frye 
+
+## Results
+aggregated salary of each team

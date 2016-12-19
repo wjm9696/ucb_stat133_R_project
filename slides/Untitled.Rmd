@@ -1,0 +1,81 @@
+---
+title: "slide"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r echo=FALSE, message=FALSE}
+setwd("/Users/Jimmy/Dropbox/stat133/final_proj/projects")
+library("dplyr")
+library("stringr")
+library("MASS")
+library("ggplot2")
+library("plyr")
+library("stringr")
+library("readr")
+library("reshape2")
+library("png")
+
+```
+
+```{r echo=FALSE, message=FALSE}
+# read in clean roster data
+data_table = read.csv(file = "../data/cleandata/roster-salary-stats.csv" , header = TRUE, stringsAsFactors = FALSE)
+data_table = data_table[, -1]
+
+# read in Efficency data
+EFF_table = read.csv(file = "../data/cleandata/eff-stats-salary.csv")
+
+# add position column to Efficency table 
+EFF_table$position = data_table$position
+
+
+# read in summary table
+summary_table = read.csv(file = "../data/cleandata/team-salaries.csv",
+                         header = TRUE, stringsAsFactors = FALSE)
+
+```
+
+## test
+
+```{r echo=FALSE, message=FALSE}
+
+# bar plot for total pay roll for each team
+ggplot(summary_table, aes(
+  x = reorder(summary_table$X, summary_table$Total_Pay_Roll), y = summary_table$Total_Pay_Roll , fill =summary_table$X
+  )) +
+  geom_bar(stat = "identity") +
+  labs(title = "NBA teams' Total Pay Roll ($)", x = "Team", y = "Total Pay Roll") +
+  theme(axis.text.x = element_text(angle = 90,  hjust = 1 ))+
+  guides(fill = guide_legend(title = "Team"))
+
+
+```
+
+## R Markdown
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+

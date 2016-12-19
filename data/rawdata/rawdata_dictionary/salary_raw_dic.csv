@@ -1,0 +1,4 @@
+"","name","plot_name","description"
+"1","salary rank","salaries.Rk","the ranking of salary in his team"
+"2","player name","salaries.Player","the first and last name of the player"
+"3","salary","salaries.Salary","the total salary for the whole "

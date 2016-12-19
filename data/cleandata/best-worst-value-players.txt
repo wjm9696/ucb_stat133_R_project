@@ -1,0 +1,21 @@
+                top20            tail20
+1       Dahntay Jones       Tony Parker
+2       Briante Weber   Carmelo Anthony
+3      Xavier Munford   DeMarre Carroll
+4         Chuck Hayes     Brian Roberts
+5     Jordan Hamilton       Roy Hibbert
+6    Jared Cunningham  Tristan Thompson
+7          Henry Sims       Enes Kanter
+8       Jordan Farmar       Sonny Weems
+9       Nate Robinson   Wesley Matthews
+10      Alan Williams         David Lee
+11      Lorenzo Brown       Chris Kaman
+12       Phil Pressey         Omer Asik
+13    Orlando Johnson        Chris Bosh
+14          Ty Lawson      Derrick Rose
+15    Marcus Thornton       Jodie Meeks
+16        Joe Johnson       Kobe Bryant
+17    Michael Beasley    Nikola Pekovic
+18       Axel Toupane Spencer Dinwiddie
+19   Andrew Goudelock       Steve Novak
+20 Bryce Dejean-Jones   Jimmer Fredette
